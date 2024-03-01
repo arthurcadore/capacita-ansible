@@ -1,0 +1,19 @@
+# Main composition file for SIG Application Container.
+# Author: Arthur Cadore M. Barcella
+# Github: arthurcadore
+# Capacitação Redes - PV Intelbras
+
+version: '3.8'
+services:
+
+  ansibleserver:
+    container_name: ansibleserver
+    # ports:
+    # Mount local directories as volumes inside the container:
+    volumes:
+      - "./inventory/:ansible/inventory"
+      - "./playbooks/:ansible/playbooks"
+      - "./keys/:ansible/keys"
+    build:
+      context: .
+      dockerfile: ./app/Dockerfile

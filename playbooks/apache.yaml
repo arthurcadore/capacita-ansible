@@ -1,0 +1,20 @@
+---
+- name: Install Apache on Ubuntu 22.04
+  hosts: web  # Replace 'your_host' with the host or group from your inventory file
+  become: yes  # Run tasks with root privileges
+
+  tasks:
+    - name: Update apt package cache
+      apt:
+        update_cache: yes
+
+    - name: Install Apache web server
+      apt:
+        name: apache2
+        state: present
+
+    - name: Ensure Apache service is enabled and running
+      systemd:
+        name: apache2
+        enabled: yes
+        state: started
