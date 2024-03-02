@@ -15,6 +15,7 @@ services:
       - "./inventory/:/ansible/inventory"
       - "./playbooks/:/ansible/playbooks"
       - "./lib/hpe-cw7-ansible-main/:/ansible/lib/"
+      - "./config/namespaces.py:/ansible/namespaces.py"
     # - "./config/ansible.cfg:/usr/lib/python3.8/site-packages/ansible/galaxy/data/apb/tests/ansible.cfg"
     build:
       context: .

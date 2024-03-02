@@ -35,5 +35,33 @@ cat /etc/passwd
 # display the open ports:
 netstat -tuln
 
+echo "###################################################################"
+echo "installing dependencies for the HPE CW7 module..."
+apk update
+apk add py-pip
+apk add py3-pip
+apk add libxml2-dev
+apk add libxslt-dev
+apk add build-base python-dev py2-pip libffi-dev
+pip install --upgrade pip
+apk add build-base libffi-dev openssl-dev
+pip install textfsm
+pip install lxml
+pip install ncclient
+pip install scp
+pip install paramiko
+pip install cffi
+pip install cryptography
+pip install ncclient==0.6.0
+pip install pyhpecw7
+
+cp /ansible/namespaces.py /ansible/lib/pyhpecw7/utils/xml/namespaces.py
+cp /ansible/namespaces.py /ansible/lib/build/lib/pyhpecw7/utils/xml/namespaces.py
+
 # Keep the script running by tailing /dev/null
 tail -f /dev/null
+
+
+
+
+
