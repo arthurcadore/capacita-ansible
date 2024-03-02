@@ -18,6 +18,8 @@ echo "installing the ansible module for H3C devices..."
 cd /ansible/lib
 pwd
 python3 setup.py install
+export ANSIBLE_LIBRARY=/ansible/lib/library/
+
 
 echo "###################################################################"
 echo "verify the ansible module for H3C devices..."

@@ -4,12 +4,12 @@ all:
       hosts:
         sw1:
           ansible_host: 10.1.1.1
-          ansible_user: ansible
-          ansible_ssh_pass: capacita123
+          username: ansible
+          password: capacita123&!
         sw2:
           ansible_host: 10.1.1.2
-          ansible_user: ansible
-          ansible_ssh_pass: capacita123
+          username: ansible
+          password: capacita123&!
     servers:
       hosts:
         apache:
