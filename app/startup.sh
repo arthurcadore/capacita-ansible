@@ -15,9 +15,10 @@ netstat -tuln
 # Install Libs for Ansible:
 apk add --no-cache libxml2
 apk add --no-cache libxslt
+apk add --no-cache git
 
 # Configure Ansible Module to H3C devices:
-python3 /ansible/lib/hpe-cw7-ansible-main/setup.py install
+python3 /ansible/lib/setup.py install
 
 ansible-doc -M library/ comware_vlan
 
