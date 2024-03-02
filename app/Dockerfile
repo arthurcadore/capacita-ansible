@@ -25,7 +25,5 @@ COPY app/startup.sh /ansible/startup.sh
 # Give executable permissions to the "startup.sh" script to execute.
 RUN chmod +x  /ansible/startup.sh
 
-RUN /ansible/startup.sh
-
 # Mantain container running:
-CMD ["tail", "-f", "/dev/null"]
+CMD ["/ansible/startup.sh"]
