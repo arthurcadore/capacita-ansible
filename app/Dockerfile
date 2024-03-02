@@ -21,8 +21,7 @@ RUN apk add --no-cache sshpass
 RUN apk add --no-cache libxml2
 RUN apk add --no-cache libxslt
 
-# Configure Ansible Module to H3C devices:
-RUN python3 ansible/lib/hpe-cw-ansible-main/setup.py
+RUN mkdir /ansible
 
 # Copy the "startup.sh" script from the local "./docker/" directory to the container.
 COPY app/startup.sh /ansible/startup.sh

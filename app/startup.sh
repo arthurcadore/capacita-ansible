@@ -9,6 +9,9 @@ echo "Iniciando Container Ansible..."
 # Start the ssh server
 /usr/sbin/sshd & 
 
+# Configure Ansible Module to H3C devices:
+python3 /ansible/lib/hpe-cw7-ansible-main/setup.py
+
 # display the open ports:
 netstat -tuln
 
