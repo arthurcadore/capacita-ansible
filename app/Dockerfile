@@ -8,8 +8,6 @@ FROM alpinelinux/ansible:latest-x86_64
 # Install SSH Server
 RUN apk add --no-cache openssh-server
 RUN ssh-keygen -A
-RUN /usr/sbin/sshd &
-RUN netstat -lnt
 
 # Create user ansible and set password
 RUN adduser -D ansible
@@ -20,5 +18,5 @@ RUN cat /etc/passwd
 RUN apk add --no-cache sshpass
 
 # Mantain container running:
-CMD ["tail", "-f", "/dev/null"]
+CMD ["/usr/sbin/sshd &", "&&", "tail", "-f", "/dev/null"]
 

@@ -12,9 +12,9 @@ services:
       - "2000:22" # SSH access port
     # Mount local directories as volumes inside the container:
     volumes:
-      - "./inventory/:ansible/inventory"
-      - "./playbooks/:ansible/playbooks"
-      - "./keys/:ansible/keys"
+      - "./inventory/:/ansible/inventory"
+      - "./playbooks/:/ansible/playbooks"
+      - "./config/ansible.cfg:/usr/lib/python3.8/site-packages/ansible/galaxy/data/apb/tests/ansible.cfg"
     build:
       context: .
       dockerfile: ./app/Dockerfile

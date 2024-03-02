@@ -1,9 +1,9 @@
 ---
 - name: Install Apache and net-tools on Ubuntu 22.04
-  hosts: web  # Replace 'your_host' with the host or group from your inventory file
-  become: yes  # Run tasks with root privileges
-  become_user: root # Specify the user for privilege escalation
-  become_method: sudo # Specify the method for privilege escalation
+  hosts: web  
+  become: yes  
+  become_user: root 
+  become_method: sudo
   tasks:
     - name: Update apt package cache
       apt:
