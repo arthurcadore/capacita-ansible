@@ -5,5 +5,20 @@
 
 FROM alpinelinux/ansible:latest-x86_64
 
+# Install SSH Server
+RUN apk add --no-cache openssh-server
+RUN ssh-keygen -A
+RUN /usr/sbin/sshd &
+RUN netstat -lnt
+
+# Create user ansible and set password
+RUN adduser -D ansible
+RUN echo "ansible:capacita" | chpasswd
+RUN cat /etc/passwd
+
+# Install sshpass
+RUN apk add --no-cache sshpass
+
+# Mantain container running:
 CMD ["tail", "-f", "/dev/null"]
 

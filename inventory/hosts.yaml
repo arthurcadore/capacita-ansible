@@ -1,0 +1,8 @@
+all:
+  children:
+    web:
+      hosts:
+        apache:
+          ansible_host: 10.1.40.205
+          ansible_user: capacita
+          ansible_ssh_pass: capacita

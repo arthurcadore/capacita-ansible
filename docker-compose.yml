@@ -5,10 +5,11 @@
 
 version: '3.8'
 services:
-
+  # Application container
   ansibleserver:
     container_name: ansibleserver
-    # ports:
+    ports:
+      - "2000:22" # SSH access port
     # Mount local directories as volumes inside the container:
     volumes:
       - "./inventory/:ansible/inventory"
