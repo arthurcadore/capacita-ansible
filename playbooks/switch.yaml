@@ -1,0 +1,35 @@
+---
+- name: Configure VLANs and interfaces on Intelbras Switch
+  hosts: switches
+  gather_facts: no
+  connection: network_cli
+  tasks:
+    - name: Configure VLAN 10
+      h3c_comware:
+        commands:
+          - vlan 10
+          - name VLAN10
+        wait_for: prompt
+
+    - name: Configure VLAN 20
+      h3c_comware:
+        commands:
+          - vlan 20
+          - name VLAN20
+        wait_for: prompt
+
+    - name: Configure interface GigabitEthernet1/0/1
+      h3c_comware:
+        commands:
+          - interface GigabitEthernet1/0/1
+          - port link-type access
+          - port default vlan 10
+        wait_for: prompt
+
+    - name: Configure interface GigabitEthernet1/0/2
+      h3c_comware:
+        commands:
+          - interface GigabitEthernet1/0/2
+          - port link-type access
+          - port default vlan 20
+        wait_for: prompt

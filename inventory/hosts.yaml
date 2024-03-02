@@ -10,13 +10,13 @@ all:
           ansible_host: 10.1.40.206
           ansible_user: capacita2
           ansible_ssh_pass: capacita
-    database:
+    switches:
       hosts:
-        db_server:
+        sw1:
           ansible_host: 10.1.40.200
-          ansible_user: capacitadb1
-          ansible_ssh_pass: capacita
-        db_server2:
+          ansible_user: switch1
+          ansible_ssh_pass: switch1password
+        sw2:
           ansible_host: 10.1.40.201
-          ansible_user: capacitadb2
-          ansible_ssh_pass: capacita
+          ansible_user: switch1
+          ansible_ssh_pass: switch2password
