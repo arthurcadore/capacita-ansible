@@ -5,22 +5,18 @@ all:
         apache:
           ansible_host: 10.1.40.205
           ansible_user: capacita
-          ansible_ssh_pass: "{{ lookup('env', 'HOST_PASSWORD_APACHE') }}"
+          ansible_ssh_pass: capacita
         nginx:
           ansible_host: 10.1.40.206
           ansible_user: capacita2
-          ansible_ssh_pass: "{{ lookup('env', 'HOST_PASSWORD_NGINX') }}"
-        daloradius:
-          ansible_host: 10.1.40.207
-          ansible_user: capacita3
-          ansible_ssh_pass: "{{ lookup('env', 'HOST_PASSWORD_DALORADIUS') }}"
+          ansible_ssh_pass: capacita
     database:
       hosts:
         db_server:
           ansible_host: 10.1.40.200
           ansible_user: capacitadb1
-          ansible_ssh_pass: "{{ lookup('env', 'HOST_PASSWORD_DB_SERVER') }}"
+          ansible_ssh_pass: capacita
         db_server2:
           ansible_host: 10.1.40.201
           ansible_user: capacitadb2
-          ansible_ssh_pass: "{{ lookup('env', 'HOST_PASSWORD_DB_SERVER2') }}"
+          ansible_ssh_pass: capacita
