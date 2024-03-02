@@ -5,11 +5,13 @@ all:
         sw1:
           ansible_host: 10.1.1.1
           username: ansible
-          password: capacita123&!
+          password: capacita123
+          ansible_network_os: h3c_comware
         sw2:
           ansible_host: 10.1.1.2
           username: ansible
-          password: capacita123&!
+          password: capacita123
+          ansible_network_os: h3c_comware
     servers:
       hosts:
         apache:
