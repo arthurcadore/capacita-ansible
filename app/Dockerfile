@@ -17,10 +17,6 @@ RUN cat /etc/passwd
 # Install sshpass
 RUN apk add --no-cache sshpass
 
-# Install Libs for Ansible:
-RUN apk add --no-cache libxml2
-RUN apk add --no-cache libxslt
-
 RUN mkdir /ansible
 
 # Copy the "startup.sh" script from the local "./docker/" directory to the container.
@@ -29,6 +25,7 @@ COPY app/startup.sh /ansible/startup.sh
 # Give executable permissions to the "startup.sh" script to execute.
 RUN chmod +x  /ansible/startup.sh
 
-# Starts the container by running the startup.sh script.
-CMD ["/ansible/startup.sh"]
+RUN /ansible/startup.sh
 
+# Mantain container running:
+CMD ["tail", "-f", "/dev/null"]
