@@ -3,33 +3,12 @@
   hosts: switches
   gather_facts: no
   connection: network_cli
+
   tasks:
-    - name: Configure VLAN 10
-      h3c_comware:
-        commands:
-          - vlan 10
-          - name VLAN10
-        wait_for: prompt
+    - name: ensure VLAN 10 exists
+      comware_vlan: vlanid=10 name=VLAN10 descr=LOCAL_SEGMENT username={{ username }} password={{ password }} hostname={{ inventory_hostname }}
 
-    - name: Configure VLAN 20
-      h3c_comware:
-        commands:
-          - vlan 20
-          - name VLAN20
-        wait_for: prompt
+    - name: ensure VLAN 20 exists
+      comware_vlan: vlanid=20 state=present username={{ username }} password={{ password }} hostname={{ inventory_hostname }}
 
-    - name: Configure interface GigabitEthernet1/0/1
-      h3c_comware:
-        commands:
-          - interface GigabitEthernet1/0/1
-          - port link-type access
-          - port default vlan 10
-        wait_for: prompt
 
-    - name: Configure interface GigabitEthernet1/0/2
-      h3c_comware:
-        commands:
-          - interface GigabitEthernet1/0/2
-          - port link-type access
-          - port default vlan 20
-        wait_for: prompt

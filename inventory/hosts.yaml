@@ -1,22 +1,22 @@
 all:
   children:
-    web:
-      hosts:
-        apache:
-          ansible_host: 10.1.40.205
-          ansible_user: capacita
-          ansible_ssh_pass: capacita
-        nginx:
-          ansible_host: 10.1.40.206
-          ansible_user: capacita2
-          ansible_ssh_pass: capacita
     switches:
       hosts:
         sw1:
-          ansible_host: 10.1.40.200
-          ansible_user: switch1
-          ansible_ssh_pass: switch1password
+          ansible_host: 10.1.1.1
+          ansible_user: ansible
+          ansible_ssh_pass: capacita123
         sw2:
-          ansible_host: 10.1.40.201
-          ansible_user: switch1
-          ansible_ssh_pass: switch2password
+          ansible_host: 10.1.1.2
+          ansible_user: ansible
+          ansible_ssh_pass: capacita123
+    servers:
+      hosts:
+        apache:
+          ansible_host: 10.1.40.205
+          ansible_user: ansible
+          ansible_ssh_pass: capacita123
+        nginx:
+          ansible_host: 10.1.40.206
+          ansible_user: ansible
+          ansible_ssh_pass: capacita123
