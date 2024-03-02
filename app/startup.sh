@@ -18,7 +18,12 @@ apk add --no-cache libxslt
 apk add --no-cache git
 
 # Configure Ansible Module to H3C devices:
-python3 /ansible/lib/setup.py install
+
+echo "###################################################################"
+echo "instalando biblioteca comware"
+cd /ansible/lib
+pwd
+python3 setup.py install
 
 ansible-doc -M library/ comware_vlan
 
