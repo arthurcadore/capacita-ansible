@@ -14,9 +14,11 @@ services:
     volumes:
       - "./inventory/:/ansible/inventory"
       - "./playbooks/:/ansible/playbooks"
-      - "./lib/hpe-cw7-ansible-main/:/ansible/lib/"
-      - "./config/namespaces.py:/ansible/namespaces.py"
-    # - "./config/ansible.cfg:/usr/lib/python3.8/site-packages/ansible/galaxy/data/apb/tests/ansible.cfg"
+      - "./config/hosts:/etc/hosts"
+      - "./config/ansible.cfg:/etc/ansible/ansible.cfg"
+      - "./config/namespaces.py:/usr/local/python3/lib/python3.7/site-packages/pyhpecw7-0.0.11-py3.7.egg/pyhpecw7/utils/xml/namespaces.py"
+      - "./config/namespaces.py:/Python-3.7.4/hpe-cw7-ansible-main/build/lib/pyhpecw7/utils/xml/namespaces.py"
+      - "./config/namespaces.py:/Python-3.7.4/hpe-cw7-ansible-main/pyhpecw7/utils/xml/namespaces.py"
     build:
       context: .
       dockerfile: ./app/Dockerfile
