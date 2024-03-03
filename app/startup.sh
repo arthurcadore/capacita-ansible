@@ -1,4 +1,4 @@
-#!/bin/ash
+#!/bin/bash
 # Author: Arthur Cadore M. Barcella
 # Github: arthurcadore
 
