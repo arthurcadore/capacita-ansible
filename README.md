@@ -124,5 +124,12 @@ This command stops and removes the containers, networks, defined in the docker-c
 
 --- 
 
+# References/Libs used: 
+
+[Base image (centos:centos7.9.2009) used ](https://hub.docker.com/_/centos/tags)
+
+[Comware HPE lib used](https://github.com/HPENetworking/hpe-cw7-ansible/)
+
+[Comware HPE lib manual](https://py3hpecw7.readthedocs.io/_/downloads/en/latest/pdf/)
 
 
