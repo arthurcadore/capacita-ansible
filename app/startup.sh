@@ -9,8 +9,7 @@ echo "Initializing the container setup script..."
 /usr/sbin/sshd &
 
 # Install Libs for Ansible:
-apk add --no-cache libxml2
-apk add --no-cache libxslt
+apk add --no-cache libxml2 libxslt
 
 # Configure Ansible Module to H3C devices:
 echo "###################################################################"
@@ -22,7 +21,6 @@ echo "###################################################################"
 echo "verify the ansible module for H3C devices..."
 export ANSIBLE_LIBRARY=/ansible/lib/library/
 env
-
 
 echo "###################################################################"
 echo "verify the ansible module for H3C devices..."
@@ -38,30 +36,12 @@ netstat -tuln
 echo "###################################################################"
 echo "installing dependencies for the HPE CW7 module..."
 apk update
-apk add py-pip
-apk add py3-pip
-apk add libxml2-dev
-apk add libxslt-dev
-apk add build-base python-dev py2-pip libffi-dev
+apk add --no-cache py-pip py3-pip libxml2-dev libxslt-dev build-base python-dev py2-pip libffi-dev build-base libffi-dev openssl-dev python3-dev git
 pip install --upgrade pip
-apk add build-base libffi-dev openssl-dev
-pip install textfsm
-pip install lxml
-pip install ncclient
-pip install scp
-pip install paramiko
-pip install cffi
-pip install cryptography
-pip install ncclient==0.6.0
-pip install pyhpecw7
+pip install textfsm lxml scp paramiko cffi cryptography ncclient==0.6.0 pyhpecw7
 
 cp /ansible/namespaces.py /ansible/lib/pyhpecw7/utils/xml/namespaces.py
 cp /ansible/namespaces.py /ansible/lib/build/lib/pyhpecw7/utils/xml/namespaces.py
 
 # Keep the script running by tailing /dev/null
 tail -f /dev/null
-
-
-
-
-
