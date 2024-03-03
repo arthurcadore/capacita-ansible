@@ -1,6 +1,6 @@
 # Ansible Appliance with HPE Comware Libs
 
-### This repository implements the [arthurcadore/ansible-comware](https://hub.docker.com/repository/docker/arthurcadore/ansible-comware) images avaiable on DockerHub.
+### This repository implements the [ansible-comware](https://hub.docker.com/repository/docker/arthurcadore/ansible-comware) images avaiable on DockerHub.
 
 Prerequisites
 Before you begin, ensure you have the following packages installed on your system:
