@@ -101,7 +101,7 @@ Once the container is up and running, you can access the container by ssh://127.
 ### Appling a playbook to the devices: 
 
 ```
-[root@ansibleserver ansible]# ansible-playbook -i /ansible/inventory/hosts.yaml /ansible/playbook.yaml
+[root@ansibleserver ansible]# ansible-playbook -i /ansible/inventory/hosts /ansible/playbooks/switch.yaml
 
 PLAY [VLAN Automation with Ansible on HP Com7 Devices] ***********************************************
 
