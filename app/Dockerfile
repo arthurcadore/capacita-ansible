@@ -12,5 +12,9 @@ RUN useradd -m -s /bin/bash ansible
 # change the password of user "ansible" to "capacita123"
 RUN echo "ansible:capacita123" | chpasswd
 
+# Add startup script to container:
+RUN copy /app/startup.sh /ansible/startup.sh
+RUN chmod +x /ansible/startup.sh
+
 # Starts and Mantain container running:
 CMD ["/ansible/startup.sh"]
