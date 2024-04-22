@@ -7,10 +7,10 @@
 
     tasks:
       - name: Creating VLAN 123 on the device
-        comware_vlan: vlanid=123 name=VLAN 123 descr=VLAN-123-DATA state=present username={{ username }} password={{ password }} hostname={{ inventory_hostname }}
+        comware_vlan: vlanid=123 name=VLAN123 descr=VLAN-123-DATA state=present username={{ username }} password={{ password }} hostname={{ inventory_hostname }}
 
       - name: Creating VLAN 20 on the device
-        comware_vlan: vlanid=20 name=VLAN 20 descr=VLAN-20-MANAGE state=present username={{ username }} password={{ password }} hostname={{ inventory_hostname }}
+        comware_vlan: vlanid=20 name=VLAN20 descr=VLAN-20-MANAGE state=present username={{ username }} password={{ password }} hostname={{ inventory_hostname }}
 
       - name: Removing VLAN 10 on the device
         comware_vlan: vlanid=10 state=absent username={{ username }} password={{ password }} hostname={{ inventory_hostname }}
