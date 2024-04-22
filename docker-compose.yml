@@ -1,4 +1,4 @@
-# Main composition file for SIG Application Container.
+# Main composition file for Ansbile Application Container.
 # Author: Arthur Cadore M. Barcella
 # Github: arthurcadore
 # Capacitação Redes - PV Intelbras
@@ -12,13 +12,14 @@ services:
       - "2000:22" # SSH access port
     # Mount local directories as volumes inside the container:
     volumes:
-      - "./inventory/:/ansible/inventory"
+      - "./inventory/:/ansible/inventory/"
       - "./playbooks/:/ansible/playbooks"
       - "./config/hosts:/etc/hosts"
-      - "./config/ansible.cfg:/etc/ansible/ansible.cfg"
-      - "./config/namespaces.py:/usr/local/python3/lib/python3.7/site-packages/pyhpecw7-0.0.11-py3.7.egg/pyhpecw7/utils/xml/namespaces.py"
-      - "./config/namespaces.py:/Python-3.7.4/hpe-cw7-ansible-main/build/lib/pyhpecw7/utils/xml/namespaces.py"
-      - "./config/namespaces.py:/Python-3.7.4/hpe-cw7-ansible-main/pyhpecw7/utils/xml/namespaces.py"
+      - "./libs/:/ansible/library/"
+     # - "./config/ansible.cfg:/etc/ansible/ansible.cfg"
+     # - "./config/namespaces.py:/usr/local/python3/lib/python3.7/site-packages/pyhpecw7-0.0.11-py3.7.egg/pyhpecw7/utils/xml/namespaces.py"
+     # - "./config/namespaces.py:/Python-3.7.4/hpe-cw7-ansible-main/build/lib/pyhpecw7/utils/xml/namespaces.py"
+     # - "./config/namespaces.py:/Python-3.7.4/hpe-cw7-ansible-main/pyhpecw7/utils/xml/namespaces.py"
     build:
       context: .
       dockerfile: ./app/Dockerfile

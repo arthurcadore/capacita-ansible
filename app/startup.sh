@@ -2,18 +2,28 @@
 # Author: Arthur Cadore M. Barcella
 # Github: arthurcadore
 
+# set the username value
+username="capacita"
+# set the username password value
+password="1234567890"
+
 # script for setting up the contianer in alpine linux:
+echo "###################################################################"
 echo "Initializing the container setup script..."
 
-# Verify the installed packages for comware ansible module:
-echo "verify the ansible module for H3C devices..."
-ansible-doc -M library/ comware_vlan
+# Create user/passwd for access the container: 
+useradd -m -s /bin/bash "$username"
+echo "$username:$password" | chpasswd
 
-# create the ssh keys for the container and start the ssh service:
-ssh-keygen -t ecdsa -f /etc/ssh/ssh_host_ecdsa_key -N ""
-ssh-keygen -t ed25519 -f /etc/ssh/ssh_host_ed25519_key -N ""
-ssh-keygen -t rsa -f /etc/ssh/ssh_host_rsa_key -N ""
+# starts ssh service:
+ssh-keygen -A
+mkdir /run/sshd
 /usr/sbin/sshd &
+
+echo "###################################################################"
+echo "Installing the H3C comware library..."
+
+python3 /ansible/library/setup.py install
 
 echo "###################################################################"
 echo "displaying the users list and SSH access port..."

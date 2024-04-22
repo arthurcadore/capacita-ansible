@@ -2,19 +2,16 @@
 # Author: Arthur Cadore M. Barcella
 # Github: arthurcadore
 # Capacitação Redes - PV Intelbras
+FROM ubuntu:22.04
 
-# Base image:
-FROM arthurcadore/ansible-comware:4.0
+ENV DEBIAN_FRONTEND=noninteractive
 
-# add user "ansible" on container
-RUN useradd -m -s /bin/bash ansible 
-
-# change the password of user "ansible" to "capacita123"
-RUN echo "ansible:capacita123" | chpasswd
+RUN apt-get update && apt-get clean
+RUN apt-get install -y ansible python3 python3-pip openssh-server net-tools
 
 # Add startup script to container:
-COPY app/startup.sh /ansible/startup.sh
-RUN chmod +x /ansible/startup.sh
+COPY app/startup.sh /usr/sbin/startup.sh
+RUN chmod +x /usr/sbin/startup.sh
 
 # Starts and Mantain container running:
-CMD ["/ansible/startup.sh"]
+CMD ["/usr/sbin/startup.sh"]
