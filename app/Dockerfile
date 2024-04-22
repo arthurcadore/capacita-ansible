@@ -13,5 +13,10 @@ RUN apt-get install -y ansible python3 python3-pip openssh-server net-tools
 COPY app/startup.sh /usr/sbin/startup.sh
 RUN chmod +x /usr/sbin/startup.sh
 
+RUN echo "###################################################################"
+RUN echo "Installing the H3C comware library..."
+
+RUN python3 /ansible/library/setup.py install
+
 # Starts and Mantain container running:
 CMD ["/usr/sbin/startup.sh"]

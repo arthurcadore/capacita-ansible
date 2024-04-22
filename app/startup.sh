@@ -5,7 +5,7 @@
 # set the username value
 username="capacita"
 # set the username password value
-password="1234567890"
+password="capacitassh#pass"
 
 # script for setting up the contianer in alpine linux:
 echo "###################################################################"
@@ -19,11 +19,6 @@ echo "$username:$password" | chpasswd
 ssh-keygen -A
 mkdir /run/sshd
 /usr/sbin/sshd &
-
-echo "###################################################################"
-echo "Installing the H3C comware library..."
-
-python3 /ansible/library/setup.py install
 
 echo "###################################################################"
 echo "displaying the users list and SSH access port..."
