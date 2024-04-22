@@ -1,4 +1,4 @@
-# Ansible Appliance with HPE Comware Libs
+# Ansible Appliance with H3C Comware Libs
 
 ### This repository implements the [ansible-comware](https://hub.docker.com/repository/docker/arthurcadore/ansible-comware) images avaiable on DockerHub.
 
@@ -126,10 +126,8 @@ This command stops and removes the containers, networks, defined in the docker-c
 
 # References/Libs used: 
 
-[Base image (centos:centos7.9.2009) used ](https://hub.docker.com/_/centos/tags)
+[Base image (ubuntu:22.04) used ](https://hub.docker.com/_/ubuntu)
 
-[Comware HPE lib used](https://github.com/HPENetworking/hpe-cw7-ansible/)
-
-[Comware HPE lib manual](https://py3hpecw7.readthedocs.io/_/downloads/en/latest/pdf/)
+[Comware HPE lib used](https://github.com/H3C/pycw7-ansible)
 
 
