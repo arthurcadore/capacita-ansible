@@ -21,6 +21,11 @@ mkdir /run/sshd
 /usr/sbin/sshd &
 
 echo "###################################################################"
+echo "Booting the H3C comware library..."
+
+python3 /ansible/library/setup.py install
+
+echo "###################################################################"
 echo "displaying the users list and SSH access port..."
 
 # display the open ports:
