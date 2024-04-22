@@ -6,16 +6,16 @@
     connection: local
 
     tasks:
-      - name: ensure VLAN 123 exists on switch devices
-        comware_vlan: vlanid=10 name=VLAN10_WEB descr=LOCALSEGMENT username={{ username }} password={{ password }} hostname={{ inventory_hostname }}
+      - name: Creating VLAN 123 on the device
+        comware_vlan: vlanid=123 name=VLAN 123 descr=VLAN-123-DATA state=present username={{ username }} password={{ password }} hostname={{ inventory_hostname }}
 
-      - name: ensure VLAN 20 exists
-        comware_vlan: vlanid=20 name=VLAN20 state=present username={{ username }} password={{ password }} hostname={{ inventory_hostname }}
+      - name: Creating VLAN 20 on the device
+        comware_vlan: vlanid=20 name=VLAN 20 descr=VLAN-20-MANAGE state=present username={{ username }} password={{ password }} hostname={{ inventory_hostname }}
 
-      - name: ensure VLAN 10 does not exist
+      - name: Removing VLAN 10 on the device
         comware_vlan: vlanid=10 state=absent username={{ username }} password={{ password }} hostname={{ inventory_hostname }}
 
-      - name: ensure these interfaces are configured with "no switchport" (routed)
+      - name: Configuring this interfaces with "no switchport" (routed) option
         comware_interface: name={{ item }} type=routed username={{ username }} password={{ password }} hostname={{ inventory_hostname }}
         with_items:
           - Ten-GigabitEthernet2/0/12
