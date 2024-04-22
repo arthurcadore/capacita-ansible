@@ -23,7 +23,7 @@ mkdir /run/sshd
 echo "###################################################################"
 echo "Booting the H3C comware library..."
 
-python3 /ansible/library/setup.py install
+python3 /ansible/setup.py install
 
 echo "###################################################################"
 echo "displaying the users list and SSH access port..."
