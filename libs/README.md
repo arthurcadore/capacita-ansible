@@ -1,3 +1,9 @@
+# Lib archives for ansible configuration with H3C devices
+
+# **Note: this is only a repository copy for container utilization, view the original repository archives at:**
+
+## https://github.com/H3C/pycw7-ansible
+
 # Introduction
 
 This project contains Ansible modules and Python3 library that can be used to automate H3C Comware 7 switches. The modules rely on NETCONF to communicate with the device for making configuration changes and getting operational data back such as LLDP neighbors, OS, serial number, uptime, and active interfaces on the device.
