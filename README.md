@@ -58,14 +58,27 @@ RUN echo "ansible:capacita123" | chpasswd
 
 ```
 ---
-- name: Configure VLANs and interfaces on Intelbras Switch
-  hosts: switches
-  gather_facts: no
-  connection: network_cli
 
-  tasks:
-    - name: ensure VLAN 10 exists
-      comware_vlan: vlanid=10 name=VLAN10 descr=LOCAL_SEGMENT username={{ username }} password={{ password }} hostname={{ inventory_hostname }}
+  - name: Configuration for H3C devices from Capacita repository
+    hosts: sw1
+    gather_facts: no
+    connection: local
+
+    tasks:
+      - name: Creating VLAN 123 on the device
+        comware_vlan: vlanid=123 name=VLAN123 descr=VLAN-123-DATA state=present username={{ username }} password={{ password }} hostname={{ inventory_hostname }}
+
+      - name: Creating VLAN 20 on the device
+        comware_vlan: vlanid=20 name=VLAN20 descr=VLAN-20-MANAGE state=present username={{ username }} password={{ password }} hostname={{ inventory_hostname }}
+
+      - name: Removing VLAN 10 on the device
+        comware_vlan: vlanid=10 state=absent username={{ username }} password={{ password }} hostname={{ inventory_hostname }}
+
+      - name: Configuring this interfaces with "no switchport" (routed) option
+        comware_interface: name={{ item }} type=routed username={{ username }} password={{ password }} hostname={{ inventory_hostname }}
+        with_items:
+          - Ten-GigabitEthernet2/0/12
+          - Ten-GigabitEthernet2/0/17
 ```
 #### you can add any other playbook archives if you want to the directory `/playbooks`. 
 
@@ -76,9 +89,17 @@ all:
     switches:
       hosts:
         sw1:
-          ansible_host: 10.1.1.1
+          ansible_host: 10.100.29.123
           username: ansible
-          password: capacita123
+          password: capacita#123
+        sw2:
+          ansible_host: 10.100.29.124
+          username: ansible2
+          password: capacita#1232
+        sw3:
+          ansible_host: 10.100.29.125
+          username: ansible3
+          password: capacita#1233
 ```
 #### you can add any other hosts archives if you want to the directory `/inventory`. 
 
@@ -101,15 +122,38 @@ Once the container is up and running, you can access the container by ssh://127.
 ### Appling a playbook to the devices: 
 
 ```
-[root@ansibleserver ansible]# ansible-playbook -i /ansible/inventory/hosts /ansible/playbooks/switch.yaml
+root@f6adc83abd94:/# ansible-playbook -i ansible/inventory/hosts ansible/playbooks/switch.yaml
 
-PLAY [VLAN Automation with Ansible on HP Com7 Devices] ***********************************************
+PLAY [Configuration for H3C devices from Capacita repository] ***********************************************************************************************
 
-TASK [ensure VLAN 10 exists] *************************************************************************
+TASK [Creating VLAN 123 on the device] **********************************************************************************************************************
+[WARNING]: Module did not set no_log for password
 changed: [sw1]
 
-PLAY RECAP *******************************************************************************************
-sw1                      : ok=1    changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+TASK [Creating VLAN 20 on the device] ***********************************************************************************************************************
+changed: [sw1]
+
+TASK [Removing VLAN 10 on the device] ***********************************************************************************************************************
+ok: [sw1]
+
+TASK [Configuring this interfaces with "no switchport" (routed) option] *************************************************************************************
+ok: [sw1] => (item=Ten-GigabitEthernet2/0/12)
+ok: [sw1] => (item=Ten-GigabitEthernet2/0/17)
+
+TASK [Change the configuration of "Ten-GigabitEthernet2/0/11"] **********************************************************************************************
+ok: [sw1] => (item=Ten-GigabitEthernet2/0/11)
+
+TASK [Configuring a new IP address on the interface "Ten-GigabitEthernet2/0/12"] ****************************************************************************
+ok: [sw1]
+
+TASK [Configuring a new IP address on the interface "Vlan-interface60"] *************************************************************************************
+ok: [sw1]
+
+TASK [Saving the configuration on the device...] ************************************************************************************************************
+changed: [sw1]
+
+PLAY RECAP **************************************************************************************************************************************************
+sw1                        : ok=8    changed=3    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0
 ```
 
 --- 
