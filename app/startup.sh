@@ -23,7 +23,8 @@ mkdir /run/sshd
 echo "###################################################################"
 echo "Booting the H3C comware library..."
 
-python3 /ansible/setup.py install
+cd /ansible/
+python3 setup.py install
 
 echo "###################################################################"
 echo "displaying the users list and SSH access port..."
@@ -33,6 +34,11 @@ netstat -tuln
 
 # display the configured users:
 cat /etc/passwd
+
+echo "###################################################################"
+echo "Execute playbooks script..."
+
+./playbooks.sh
 
 # Keep the script running by tailing /dev/null
 tail -f /dev/null

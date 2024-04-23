@@ -13,6 +13,7 @@ services:
     # Mount local directories as volumes inside the container:
     volumes:
       - "./inventory/:/ansible/inventory/"
+      - "./playbooks/playbooks.sh:/ansible/playbooks.sh"
       - "./playbooks/:/ansible/playbooks/"
       - "./config/hosts:/etc/hosts"
       - "./libs/:/ansible/"
