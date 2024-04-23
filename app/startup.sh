@@ -38,6 +38,7 @@ cat /etc/passwd
 echo "###################################################################"
 echo "Execute playbooks script..."
 
+chmod +x ./playbooks.sh
 ./playbooks.sh
 
 # Keep the script running by tailing /dev/null
