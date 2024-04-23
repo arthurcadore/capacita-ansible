@@ -118,6 +118,11 @@ The "&" character creates a process id for the command inputed in, with means th
 
 Once the container is up and running, you can access the container by ssh://127.0.0.1:2000 (2000/TCP port is the default SSH port as defined in the docker-compose.yml file)
 
+Note: When access the container by using SSH or docker interative shell, its important to execute the command `python3 /ansible/setup.py install` on your prompt, otherwise the library its not loaded to execute the playbooks
+
+**The recomendation for this application is to execute the playbooks using the bash script located at /app/startup.sh**
+
+
 ---
 ### Appling a playbook to the devices: 
 
