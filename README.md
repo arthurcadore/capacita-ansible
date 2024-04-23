@@ -156,6 +156,58 @@ PLAY RECAP *********************************************************************
 sw1                        : ok=8    changed=3    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0
 ```
 
+---
+### Configuring connection to the device manually: 
+
+First, access the python3 prompt using `python3` command:
+```
+[root@demo]# python3
+Python 3.10.12 (main, Nov 20 2023, 14:14:05) [GCC 11.4.0] on linux
+```
+
+In python prompt, import comware 7 ansible library using the command below:  
+```
+>>> from pycw7.comware import COM7
+```
+
+In sequence, create an vector with all parameters for login on the device, as displayed below: 
+```
+>>> accessvalues = dict(host='sw1', username='ansible', password='capacita#123', port=830)
+```
+
+Once the vector is created, create an object `device` using the COM7 library passing the access vector on:  
+```
+>>> device = COM7(**accessvalues)
+```
+
+In sequence, open a communication channel with the device using: 
+```
+>>> device.open()
+<ncclient.manager.Manager object at 0x7f3ed5953150>
+```
+
+#### To test it, we can get a vlan configuration using `vlan.comware` submodule: 
+
+First, we need to import the feature to the prompt line, to do that, we can use: 
+```
+>>> from pycw7.features.vlan import Vlan
+```
+
+In sequence, with `Vlan` feature loaded, we'll pass the device and VID agrs as parameters to the feature function: 
+```
+>>> vlan20 = Vlan(device,'20') 
+```
+
+Finishing, we'll call the function `get_config()`, to verify the VID20 on the device:  
+```
+>>> vlan20.get_config()
+```
+
+The result for this call is displayed below: 
+```
+{'vlanid': '20', 'name': 'VLAN20', 'descr': 'VLAN-20-MANAGE'}
+```
+
 --- 
 ### Stop Container: 
 To stop the running container, use the following command:
