@@ -14,7 +14,7 @@ services:
     volumes:
       - "./inventory/:/ansible/inventory/"
       - "./playbooks/playbooks.sh:/ansible/playbooks.sh"
-      - "./playbooks/:/ansible/playbooks/"
+      - "./playbooks/switch.yaml:/ansible/switch.yaml"
       - "./config/hosts:/etc/hosts"
       - "./libs/:/ansible/"
     build:
