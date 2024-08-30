@@ -11,8 +11,8 @@ python3 setup.py install
 echo "###################################################################"
 echo "Execute playbooks script..."
 
-chmod +x ./playbooks.sh
-./playbooks.sh
+chmod +x /ansible/playbooks/playbooks.sh
+/ansible/playbooks/playbooks.sh
 
 # Keep the script running by tailing /dev/null
 tail -f /dev/null
