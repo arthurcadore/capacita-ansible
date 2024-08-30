@@ -13,6 +13,3 @@ echo "Execute playbooks script..."
 
 chmod +x /ansible/playbooks/playbooks.sh
 /ansible/playbooks/playbooks.sh
-
-# Keep the script running by tailing /dev/null
-tail -f /dev/null
