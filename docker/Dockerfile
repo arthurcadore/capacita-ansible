@@ -7,7 +7,11 @@ FROM ubuntu:22.04
 ENV DEBIAN_FRONTEND=noninteractive
 
 RUN apt-get update && apt-get clean
-RUN apt-get install -y ansible python3 python3-pip openssh-server net-tools
+RUN apt-get install -y \
+            ansible \
+            python3 \
+            python3-pip
+            supervisor
 
 # Install additional dependencies for container
 RUN pip3 install textfsm==1.1.0 \
@@ -26,5 +30,8 @@ RUN pip3 install textfsm==1.1.0 \
 COPY docker/startup.sh /usr/sbin/startup.sh
 RUN chmod +x /usr/sbin/startup.sh
 
-# Starts and Mantain container running:
-CMD ["/usr/sbin/startup.sh"]
+# Add supervisord configuration file:
+COPY docker/supervisor.conf /etc/supervisord.conf
+
+
+CMD ["/usr/bin/supervisord", "-c", "/etc/supervisord.conf"]
