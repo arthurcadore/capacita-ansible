@@ -1,4 +1,4 @@
-# Ansible Appliance with H3C Comware Libs
+# Ansible Appliance with Intelbras Comware Libs
 
 ### This repository implements the [ansible-comware](https://hub.docker.com/repository/docker/arthurcadore/ansible-comware) images avaiable on DockerHub.
 
@@ -59,7 +59,7 @@ RUN echo "ansible:capacita123" | chpasswd
 ```
 ---
 
-  - name: Configuration for H3C devices from Capacita repository
+  - name: Configuration for Intelbras devices from Capacita repository
     hosts: sw1
     gather_facts: no
     connection: local
@@ -129,7 +129,7 @@ Note: When access the container by using SSH or docker interative shell, its imp
 ```
 root@f6adc83abd94:/# ansible-playbook -i ansible/inventory/hosts ansible/playbooks/switch.yaml
 
-PLAY [Configuration for H3C devices from Capacita repository] ***********************************************************************************************
+PLAY [Configuration for Intelbras devices from Capacita repository] ***********************************************************************************************
 
 TASK [Creating VLAN 123 on the device] **********************************************************************************************************************
 [WARNING]: Module did not set no_log for password
