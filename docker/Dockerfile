@@ -10,7 +10,7 @@ RUN apt-get update && apt-get clean
 RUN apt-get install -y \
             ansible \
             python3 \
-            python3-pip
+            python3-pip \
             supervisor
 
 # Install additional dependencies for container
