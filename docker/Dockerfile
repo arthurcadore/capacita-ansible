@@ -23,7 +23,7 @@ RUN pip3 install textfsm==1.1.0 \
                  pycparser==2.22
 
 # Add startup script to container:
-COPY app/startup.sh /usr/sbin/startup.sh
+COPY docker/startup.sh /usr/sbin/startup.sh
 RUN chmod +x /usr/sbin/startup.sh
 
 # Starts and Mantain container running:

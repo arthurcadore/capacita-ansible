@@ -8,15 +8,15 @@ services:
   # Application container
   ansibleserver:
     container_name: ansibleserver
-    ports:
-      - "2000:22" # SSH access port
-    # Mount local directories as volumes inside the container:
     volumes:
       - "./inventory/:/ansible/inventory/"
       - "./playbooks/playbooks.sh:/ansible/playbooks.sh"
       - "./playbooks/switch.yaml:/ansible/switch.yaml"
       - "./config/hosts:/etc/hosts"
       - "./libs/:/ansible/"
+      - ./env/namespaces.py:/usr/local/lib/python3.10/dist-packages/pycw7-0.0.11-py3.10.egg/pycw7/utils/xml/namespaces.py
+      - ./env/namespaces.py:/ansible/pycw7/utils/xml/namespaces.py
+    #  - ./env/namespaces.py:/ansible/build/lib/pycw7/utils/xml/namespaces.py
     build:
       context: .
-      dockerfile: ./app/Dockerfile
+      dockerfile: ./docker/Dockerfile
